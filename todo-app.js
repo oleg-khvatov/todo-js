@@ -27,9 +27,9 @@
     form.append(buttonWrapper);
 
     input.addEventListener('input', function(){
-      if (input.value !== '') {
+      if (input.value.trim() !== '') {
         button.removeAttribute('disabled') ; //удаление атрибута 'disabled' кнопке "Добавить дело"
-      }else {
+      } else {
         button.setAttribute('disabled', 'disabled'); //добавление атрибута 'disabled' кнопке "Добавить дело"
       }
     });
@@ -94,12 +94,12 @@
             object.done = true;
           };
         };
-      }else {
-        for (object of dataFromLs) {
-          if(object.id === doneId) {
-            object.done = false;
+      } else {
+          for (object of dataFromLs) {
+            if(object.id === doneId) {
+              object.done = false;
+            };
           };
-        };
       };
       localStorage.setItem(key, JSON.stringify(dataFromLs)); //запись изменений (done), после нажатия кнопки "Готово" 
     });
